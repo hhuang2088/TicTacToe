@@ -20,15 +20,22 @@ var id = $(this).attr('id')
     turn += 1;
     tie();
   }
-
-
-  // board[id] = player
-  // alert("clicked");
-  // $('#ttt_board').delegate('td', 'click', function(e) {
-  // var t = $(e.target).html();
-  // console.log(e)
-  // });
 });
+
+$('#reset').click(function() {
+  board["A1"] = undefined;
+  board["B1"] = undefined;
+  board["C1"] = undefined;
+  board["A2"] = undefined;
+  board["B2"] = undefined;
+  board["C2"] = undefined;
+  board["A3"] = undefined;
+  board["B3"] = undefined;
+  board["C3"] = undefined;
+  $('td').html("");
+  turn = 0;
+});
+
 function togglePlayer() {
   if(player === "X") {
     player = "O";
@@ -81,12 +88,6 @@ function winCheck() {
       
     } else {
         console.log(player + "'s turn");
-  }
-  }
-
-
-
-// $('#reset').onclick(function() {
-//   $.scope('td')
-//   });
+    }
+  };
 });
