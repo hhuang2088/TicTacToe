@@ -8,15 +8,16 @@ var board = {
 
 var turn = 0;
 var player = "X";
-var win = undefined;
+var win = false;
 
-$('td').click(function() {
+$('#ttt_board tr td').click(function() {
 var id = $(this).attr('id')
-  if(board[id] === undefined) {
+  if((board[id] === undefined) && (win === false)) {
     board[id] = player;
-    $(this).append(player)
+    $(this).append(player);
     togglePlayer();
     winCheck();
+    ;
     turn += 1;
     tie();
   }
@@ -34,6 +35,7 @@ $('#reset').click(function() {
   board["C3"] = undefined;
   $('td').html("");
   turn = 0;
+  win = false;
 });
 
 function togglePlayer() {
@@ -45,7 +47,7 @@ function togglePlayer() {
 }
 
 function tie() {
-  if(turn === 9) {
+  if(turn === 9 && win === false) {
     alert("Tie");
   }
 };
@@ -54,37 +56,53 @@ function winCheck() {
   // X win conditions
   if((board["A1"] === "X") && (board["A2"] === "X") && (board["A3"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["B1"] === "X") && (board["B2"] === "X") && (board["B3"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["C1"] === "X") && (board["C2"] === "X") && (board["C3"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["A1"] === "X") && (board["B2"] === "X") && (board["C3"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["A3"] === "X") && (board["B2"] === "X") && (board["C1"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["A1"] === "X") && (board["B1"] === "X") && (board["C1"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["A2"] === "X") && (board["B2"] === "X") && (board["C2"] === "X")) {
         alert("X wins");
+        win = true;
     } else if((board["A3"] === "X") && (board["B3"] === "X") && (board["C3"] === "X")) {
         alert("X wins");
+        win = true;
     // O win conditions
     } else if((board["A1"] === "O") && (board["A2"] === "O") && (board["A3"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["B1"] === "O") && (board["B2"] === "O") && (board["B3"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["C1"] === "O") && (board["C2"] === "O") && (board["C3"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["A1"] === "O") && (board["B2"] === "O") && (board["C3"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["A3"] === "O") && (board["B2"] === "O") && (board["C1"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["A1"] === "O") && (board["B1"] === "O") && (board["C1"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["A2"] === "O") && (board["B2"] === "O") && (board["C2"] === "O")) {
         alert("O wins");
+        win = true;
     } else if((board["A3"] === "O") && (board["B3"] === "O") && (board["C3"] === "O")) {
         alert("O wins");
+        win = true;
       
     } else {
         console.log(player + "'s turn");
